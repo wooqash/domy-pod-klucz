@@ -1,6 +1,6 @@
 on: 
   push:
-    branches: [master]
+    branches: [main]
 name: 🚀 Deploy website to domypodklucz.pl via FTP
 jobs:
   web-deploy:
