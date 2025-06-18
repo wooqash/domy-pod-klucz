@@ -1,7 +1,7 @@
 on: 
   push:
     branches: [master]
-name: 🚀 Deploy website to az.pl via FTP - PROD
+name: 🚀 Deploy website to domypodklucz.pl via FTP
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -37,8 +37,8 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          local-dir: ./src/api/
-          server-dir: /public_html/api/
+          local-dir: ./src/php/
+          server-dir: /public_html/php/
       - name: 📂 Sync vendor folder
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
