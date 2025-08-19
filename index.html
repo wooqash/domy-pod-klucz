@@ -1,18 +1,943 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="./favicon/favicon-96x96.png" sizes="96x96" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="./favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
     <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg" />
     <link rel="shortcut icon" href="./favicon/favicon.ico" sizes="32x32" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
     <link rel="manifest" href="./favicon/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Domy pod klucz</title>
+    <title>
+      Budowa domów jednorodzinnych Łódź i województwo łódzkie | Domy pod klucz
+    </title>
+    <meta
+      name="description"
+      content="Budujemy nowoczesne domy do 70m2 bez pozwolenia. Szybko, ekonomicznie, z darmowym projektem GUNB. Sprawdź naszą ofertę i skontaktuj się!"
+    />
     <script src="https://www.google.com/recaptcha/api.js?render=%VITE_RECAPTCHA_SITE_KEY%"></script>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
   </head>
   <body>
-    <div id="app"></div>
+    <!-- Navigation Menu -->
+    <div class="navigation_menu">
+      <div class="navigation_cnt">
+        <div class="nav_link">
+          <a href="index.html">Home</a>
+        </div>
+        <div class="nav_link">
+          <a href="projekty.html">Projekty</a>
+        </div>
+        <div class="nav_link">
+          <a href="o-nas.html">O nas</a>
+        </div>
+        <div class="nav_link">
+          <a href="kontakt.html">Kontakt</a>
+        </div>
+        <div class="navigation_social">
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-linkedin"></i>
+        </div>
+        <div class="navigation_policies">
+          <a href="polityka-prywatnosci.html">
+            Polityka prywatności & Cookies</a
+          >
+          <a href="cookies.html"> Wykorzystanie plików Cookies</a>
+          <a href="warunki-korzystania.html"> Warunki korzystania z serwisu</a>
+        </div>
+      </div>
+    </div>
+    <!-- Overlay -->
+    <div id="overlay"></div>
+    <!-- Navbar -->
+    <nav>
+      <div class="nav_cnt">
+        <div class="logo">
+          <a
+            class="logo-link"
+            href="#hero"
+            title="Idź do strony głównej"
+            data-scroll-to
+          >
+            <img
+              src="./logo/logo-dark.svg"
+              alt="Ikona z logotypu firmy Domy pod klucz"
+              width="80"
+              height="80"
+            />
+          </a>
+        </div>
+        <div class="hamburger open_nav">
+          <svg
+            viewBox="0 0 48 48"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g>
+              <line x1="0" y1="17" x2="48" y2="17" stroke-width="1" />
+              <line x1="0" y1="31" x2="48" y2="31" stroke-width="1" />
+            </g>
+
+            <g>
+              <line x1="0" y1="24" x2="48" y2="24" stroke-width="1" />
+              <line x1="0" y1="24" x2="48" y2="24" stroke-width="1" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </nav>
+
+    <!------------- ALL CONTENT ------------>
+    <main id="main">
+      <!-- Hero Section -->
+      <section id="hero" class="hero container">
+        <div class="txt">
+          <div class="hero_heading">
+            <h1 class="font96">Zbuduj z nami Twój własny wymarzony dom</h1>
+          </div>
+          <div class="hero_heading">
+            <h1 class="font96"></h1>
+          </div>
+          <p class="font20 grey mT20">Oszczędź swój czas, pieniądze i nerwy!</p>
+          <div class="btn mT50">
+            <a
+              class="btn_cnt"
+              href="#about"
+              style="transform: translate3d(0px, 0px, 0px)"
+              data-scroll-to
+            >
+              <span class="btn-text"
+                ><span data-text="Pokaż mi jak to zrobić"
+                  >Pokaż mi jak to zrobić</span
+                ></span
+              >
+            </a>
+          </div>
+        </div>
+        <div class="image" data-scroll>
+          <!-- <img src="./images/dom-marzen.jpg" alt="home 02" > -->
+          <picture>
+            <source
+              srcset="./images/hero/dom-marzen_xl.avif 1x"
+              type="image/avif"
+              media="(min-width: 1920px)"
+            />
+            <source
+              srcset="
+                ./images/hero/dom-marzen_l.avif  1x,
+                ./images/hero/dom-marzen_xl.avif 2x
+              "
+              type="image/avif"
+              media="(min-width: 1024px)"
+            />
+            <source
+              srcset="
+                ./images/hero/dom-marzen_m.avif 1x,
+                ./images/hero/dom-marzen_l.avif 2x
+              "
+              type="image/avif"
+              media="(min-width: 480px)"
+            />
+            <source
+              srcset="./images/hero/dom-marzen_xl.webp 1x"
+              type="image/webp"
+              media="(min-width: 1920px)"
+            />
+            <source
+              srcset="
+                ./images/hero/dom-marzen_l.webp  1x,
+                ./images/hero/dom-marzen_xl.webp 2x
+              "
+              type="image/webp"
+              media="(min-width: 1024px)"
+            />
+            <source
+              srcset="
+                ./images/hero/dom-marzen_m.webp 1x,
+                ./images/hero/dom-marzen_l.webp 2x
+              "
+              type="image/webp"
+              media="(min-width: 480px)"
+            />
+            <img
+              src="./images/hero/dom-marzen_s.jpg"
+              srcset="
+                ./images/hero/dom-marzen_s.jpg 1x,
+                ./images/hero/dom-marzen_m.jpg 2x
+              "
+              alt="Wizualizacja nowoczesnego domu z basenem"
+              width="480"
+              height="318"
+              class="hero-image"
+              fetchpriority="high"
+              decoding="sync"
+              data-scroll
+              data-scroll-speed="-2"
+            />
+          </picture>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="container containerV">
+        <div class="about_block">
+          <div class="txt">
+            <h1 class="font64">
+              Szukasz ekonomicznego i wygodnego rozwiązania na własny dom?
+            </h1>
+          </div>
+          <div class="image" data-scroll>
+            <!-- <img src="./images/about/aboutBlock1.webp" alt="about imag" loading="lazy" data-scroll
+                        data-scroll-speed="-2"> -->
+            <picture>
+              <source
+                srcset="./images/about/ekonomia_l.avif 1x"
+                type="image/avif"
+                media="(min-width: 1024px)"
+              />
+              <source
+                srcset="
+                  ./images/about/ekonomia_m.avif 1x,
+                  ./images/about/ekonomia_l.avif 2x
+                "
+                type="image/avif"
+                media="(min-width: 480px)"
+              />
+              <source
+                srcset="./images/about/ekonomia_l.webp 1x"
+                type="image/webp"
+                media="(min-width: 1024px)"
+              />
+              <source
+                srcset="
+                  ./images/about/ekonomia_m.webp 1x,
+                  ./images/about/ekonomia_l.webp 2x
+                "
+                type="image/webp"
+                media="(min-width: 480px)"
+              />
+              <img
+                src="./images/about/ekonomia_s.jpg"
+                srcset="
+                  ./images/about/ekonomia_s.jpg 1x,
+                  ./images/about/ekonomia_m.jpg 2x
+                "
+                alt="Dokumenty, świnka skarbonka oraz pieniądze na stole"
+                width="480"
+                height="303"
+                class="hero-image"
+                loading="lazy"
+                data-scroll
+                data-scroll-speed="-2"
+              />
+            </picture>
+          </div>
+        </div>
+        <div class="about_block mT120">
+          <div class="image" data-scroll>
+            <!-- <img src="./images/about/aboutBlock3.webp" alt="about imag" loading="lazy" data-scroll
+                        data-scroll-speed="-2"> -->
+            <picture>
+              <source
+                srcset="./images/about/team_l.avif 1x"
+                type="image/avif"
+                media="(min-width: 1024px)"
+              />
+              <source
+                srcset="
+                  ./images/about/team_m.avif 1x,
+                  ./images/about/team_l.avif 2x
+                "
+                type="image/avif"
+                media="(min-width: 480px)"
+              />
+              <source
+                srcset="./images/about/team_l.webp 1x"
+                type="image/webp"
+                media="(min-width: 1024px)"
+              />
+              <source
+                srcset="
+                  ./images/about/team_m.webp 1x,
+                  ./images/about/team_l.webp 2x
+                "
+                type="image/webp"
+                media="(min-width: 480px)"
+              />
+              <img
+                src="./images/about/team_s.jpg"
+                srcset="
+                  ./images/about/team_s.jpg 1x,
+                  ./images/about/team_m.jpg 2x
+                "
+                alt="Dokumenty, świnka skarbonka oraz pieniądze na stole"
+                width="480"
+                height="303"
+                class="hero-image"
+                loading="lazy"
+                data-scroll
+                data-scroll-speed="-2"
+              />
+            </picture>
+          </div>
+          <div class="txt">
+            <!-- <p class="font26">
+                        Oferujemy budowę nowoczesnych domów jednorodzinnych <strong>do 70m2</strong> na zgłoszenie – bez zbędnych formalności, bez pozwolenia na budowę, z darmowymi projektami od Głównego Urzędu Nadzoru Budowlanego (GUNB). Oszczędzasz <strong>czas</strong> i <strong>pieniądze</strong>, a my zajmujemy się wszystkim od <strong>A</strong> do <strong>Z</strong>.
+                    </p> -->
+            <p class="font26">
+              Jesteśmy zespołem specjalistów z
+              <strong>wieloletnim</strong> doświadczeniem w
+              <strong>budowie domów jednorodzinnych</strong>. Naszą
+              <strong>misją</strong> jest
+              <strong>uproszczenie procesu inwestycyjnego</strong> i zapewnienie
+              klientom pewności, że ich dom powstanie <strong>szybko</strong>,
+              <strong>solidnie</strong> i <strong>bez niespodzianek</strong>.
+              Stawiamy na <strong>jasne zasady</strong>,
+              <strong>przejrzyste ceny</strong> i
+              <strong>indywidualne podejście</strong> do każdego projektu.
+            </p>
+
+            <div class="btn mT80">
+              <a
+                class="btn_cnt"
+                href="#offer"
+                style="transform: translate3d(0px, 0px, 0px)"
+                data-scroll-to
+              >
+                <span class="btn-text"
+                  ><span data-text="Sprawdź naszą ofertę"
+                    >Sprawdź naszą ofertę</span
+                  ></span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Method Section -->
+        <div class="about_block mT120">
+          <div class="txt">
+            <h1 class="font64">
+              Zobacz nasze dotychczasowe realizacje i przekonaj się, jak łatwo
+              możesz zamieszkać w swoim wymarzonym domu!
+            </h1>
+
+            <div class="btn mT80">
+              <a
+                class="btn_cnt"
+                href="#work"
+                style="transform: translate3d(0px, 0px, 0px)"
+                data-scroll-to
+              >
+                <span class="btn-text"
+                  ><span data-text="Sprawdź nasze realizacje"
+                    >Sprawdź nasze realizacje</span
+                  ></span
+                >
+              </a>
+            </div>
+          </div>
+          <div class="image" data-scroll>
+            <!-- <img src="./images/home/method_2.webp" alt="method imag" loading="lazy" data-scroll
+                        data-scroll-speed="-2"> -->
+            <picture>
+              <source
+                srcset="./images/about/plan_l.avif 1x"
+                type="image/avif"
+                media="(min-width: 1024px)"
+              />
+              <source
+                srcset="
+                  ./images/about/plan_m.avif 1x,
+                  ./images/about/plan_l.avif 2x
+                "
+                type="image/avif"
+                media="(min-width: 480px)"
+              />
+              <source
+                srcset="./images/about/plan_l.webp 1x"
+                type="image/webp"
+                media="(min-width: 1024px)"
+              />
+              <source
+                srcset="
+                  ./images/about/plan_m.webp 1x,
+                  ./images/about/plan_l.webp 2x
+                "
+                type="image/webp"
+                media="(min-width: 480px)"
+              />
+              <img
+                src="./images/about/plan_s.jpg"
+                srcset="
+                  ./images/about/plan_s.jpg 1x,
+                  ./images/about/plan_m.jpg 2x
+                "
+                alt="Dokumenty, świnka skarbonka oraz pieniądze na stole"
+                width="480"
+                height="303"
+                class="hero-image"
+                loading="lazy"
+                data-scroll
+                data-scroll-speed="-2"
+              />
+            </picture>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="offer"
+        class="benefits cards-section container containerV mT80"
+      >
+        <div class="offer-block">
+          <h2 class="font_B font64">
+            Dowiedz się, co możemy dla Ciebie zrobić
+          </h2>
+          <p class="font26 offer-desc">
+            Szukasz sprawdzonego wykonawcy do budowy domu jednorodzinnego w
+            <strong>Łodzi</strong> lub <strong>okolicach</strong>? Zrealizujemy
+            Twój projekt – od pierwszej rozmowy aż po przekazanie kluczy!
+            Niezależnie od tego, czy masz już gotowy projekt domu, czy dopiero
+            szukasz inspiracji, zapewniamy pełne wsparcie na
+            <strong>każdym</strong> etapie inwestycji.
+          </p>
+          <p class="font26">
+            Specjalizujemy się w
+            <strong>budowie domów jednorodzinnych</strong> w różnych
+            technologiach – <strong>murowanych</strong>,
+            <strong>szkieletowych</strong>,
+            <strong>energooszczędnych</strong> oraz
+            <strong>nowoczesnych domów modułowych</strong>. Doradzimy najlepsze
+            rozwiązania, zajmiemy się formalnościami i zadbamy o najwyższą
+            jakość wykonania.
+          </p>
+        </div>
+        <div class="offer-block">
+          <h2 class="font64">Dlaczego warto nam zaufać?</h2>
+          <div class="cards-grid">
+            <!-- 1 -->
+            <div class="card">
+              <div
+                class="card-icon"
+                aria-label="Kompleksowa obsługa inwestycji"
+              >
+                <!-- Ikona: plan/projekt -->
+                <svg
+                  width="48"
+                  height="48"
+                  fill="none"
+                  stroke="#000"
+                  stroke-width="2"
+                >
+                  <rect x="8" y="12" width="32" height="24" rx="3" />
+                  <path d="M16 20h16M16 28h8" />
+                </svg>
+              </div>
+              <div class="card-title font_B font20">
+                Kompleksowa obsługa inwestycji
+              </div>
+              <div class="card-desc font18">
+                Od projektu po odbiór domu – prowadzimy inwestycję od A do Z.
+              </div>
+            </div>
+            <!-- 2 -->
+            <div class="card">
+              <div
+                class="card-icon"
+                aria-label="Technologia dopasowana do potrzeb"
+              >
+                <!-- Ikona: narzędzia/ustawienia -->
+                <svg
+                  width="48"
+                  height="48"
+                  fill="none"
+                  stroke="#000"
+                  stroke-width="2"
+                >
+                  <circle cx="24" cy="24" r="18" />
+                  <path d="M24 14v20M14 24h20" />
+                </svg>
+              </div>
+              <div class="card-title font_B font20">
+                Technologia dopasowana do Ciebie
+              </div>
+              <div class="card-desc font18">
+                Budujemy domy murowane, szkieletowe i modułowe – zawsze zgodnie
+                z Twoimi oczekiwaniami.
+              </div>
+            </div>
+            <!-- 3 -->
+            <div class="card">
+              <div class="card-icon" aria-label="Pomoc w wyborze projektu">
+                <!-- Ikona: lupa/dokument -->
+                <svg
+                  width="48"
+                  height="48"
+                  fill="none"
+                  stroke="#000"
+                  stroke-width="2"
+                >
+                  <rect x="12" y="12" width="24" height="24" rx="3" />
+                  <circle cx="34" cy="34" r="4" />
+                  <path d="M30 30l4 4" />
+                </svg>
+              </div>
+              <div class="card-title font_B font20">
+                Pomoc w wyborze projektu
+              </div>
+              <div class="card-desc font18">
+                Doradzamy przy wyborze i adaptacji projektów, także tych
+                indywidualnych.
+              </div>
+            </div>
+            <!-- 4 -->
+            <div class="card">
+              <div class="card-icon" aria-label="Doświadczenie lokalne">
+                <!-- Ikona: mapa/pin -->
+                <svg
+                  width="48"
+                  height="48"
+                  fill="none"
+                  stroke="#000"
+                  stroke-width="2"
+                >
+                  <circle cx="24" cy="20" r="8" />
+                  <path d="M24 28c-8 0-12 4-12 8v4h24v-4c0-4-4-8-12-8z" />
+                </svg>
+              </div>
+              <div class="card-title font_B font20">
+                Doświadczenie w regionie
+              </div>
+              <div class="card-desc font18">
+                Budujemy domy w Łodzi i województwie łódzkim – znamy lokalne
+                realia.
+              </div>
+            </div>
+            <!-- 5 -->
+            <div class="card">
+              <div class="card-icon" aria-label="Przejrzyste warunki">
+                <!-- Ikona: dokument -->
+                <svg
+                  width="48"
+                  height="48"
+                  fill="none"
+                  stroke="#000"
+                  stroke-width="2"
+                >
+                  <rect x="12" y="12" width="24" height="24" rx="3" />
+                  <path d="M16 16h16M16 24h16M16 32h8" />
+                </svg>
+              </div>
+              <div class="card-title font_B font20">Przejrzyste warunki</div>
+              <div class="card-desc font18">
+                Jasne zasady współpracy i szczegółowa wycena na każdym etapie.
+              </div>
+            </div>
+            <!-- 6 -->
+            <div class="card">
+              <div class="card-icon" aria-label="Gwarancja jakości">
+                <!-- Ikona: tarcza/gwarancja -->
+                <svg
+                  width="48"
+                  height="48"
+                  fill="none"
+                  stroke="#000"
+                  stroke-width="2"
+                >
+                  <path d="M24 6l16 6v8c0 10-7 19-16 22C15 39 8 30 8 20V12z" />
+                  <path d="M18 24l4 4 8-8" />
+                </svg>
+              </div>
+              <div class="card-title font_B font20">Gwarancja jakości</div>
+              <div class="card-desc font18">
+                Dbamy o każdy detal i udzielamy gwarancji na wykonane prace.
+              </div>
+            </div>
+            <!-- 7 -->
+            <div class="card">
+              <div class="card-icon" aria-label="Energooszczędność">
+                <!-- Ikona: liść/energia -->
+                <svg
+                  width="48"
+                  height="48"
+                  fill="none"
+                  stroke="#000"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M24 44c10-8 16-16 16-28A16 16 0 0 0 8 16c0 12 6 20 16 28z"
+                  />
+                  <path d="M24 28v-8" />
+                </svg>
+              </div>
+              <div class="card-title font_B font20">Energooszczędność</div>
+              <div class="card-desc font18">
+                Stosujemy nowoczesne, ekologiczne technologie i materiały.
+              </div>
+            </div>
+            <!-- 8 -->
+            <div class="card">
+              <div class="card-icon" aria-label="Wsparcie formalne">
+                <!-- Ikona: pieczątka/urząd -->
+                <svg
+                  width="48"
+                  height="48"
+                  fill="none"
+                  stroke="#000"
+                  stroke-width="2"
+                >
+                  <rect x="14" y="28" width="20" height="8" rx="2" />
+                  <circle cx="24" cy="18" r="6" />
+                </svg>
+              </div>
+              <div class="card-title font_B font20">Wsparcie formalne</div>
+              <div class="card-desc font18">
+                Pomagamy w uzyskaniu pozwoleń, zgłoszeń i prowadzeniu
+                dokumentacji inwestycji.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="offer-block">
+          <h2 class="font_B font64">Dodatkowo oferujemy:</h2>
+          <p class="font26 offer-desc">
+            Dla zainteresowanych <strong>szybką</strong> i
+            <strong>ekonomiczną</strong> budową – realizujemy również domy do
+            <strong>70m2 na zgłoszenie</strong>, z wykorzystaniem sprawdzonych
+            projektów
+            <strong>Głównego Urzędu Nadzoru Budowlanego</strong> (GUNB).
+          </p>
+          <p class="font26">
+            GUNB oferuje szeroki wybór projektów domów do 70m2 na zgłoszenie –
+            <strong>parterowych</strong>, <strong>z poddaszem</strong>,
+            <strong>nowoczesnych</strong> i <strong>klasycznych</strong>. Każdy
+            projekt możesz dopasować do swojej działki i potrzeb rodziny.
+            <a href="#contact" data-scroll-to="">Skontaktuj się z nami</a>, aby
+            omówić swój wymarzony dom. Razem przeprowadzimy Cię przez cały
+            proces budowy – bez stresu i niespodzianek!
+          </p>
+        </div>
+
+        <!-- Sekcja pakietów -->
+        <div class="packages-grid">
+          <!-- Pakiet podstawowy -->
+          <div class="package-card basic">
+            <div class="package-title">Pakiet podstawowy</div>
+            <div class="package-desc">
+              Stan surowy zamknięty<br />
+              Szybka realizacja<br />
+              Niska cena
+            </div>
+            <a href="#zamowienie" class="package-cta">Wybierz pakiet</a>
+          </div>
+          <!-- Pakiet optymalny -->
+          <div class="package-card optimal">
+            <div class="package-title">Pakiet optymalny</div>
+            <div class="package-desc">
+              Dom wykończony, gotowy do zamieszkania<br />
+              Energooszczędność w standardzie
+            </div>
+            <a href="#zamowienie" class="package-cta">Wybierz pakiet</a>
+          </div>
+          <!-- Pakiet rozszerzony -->
+          <div class="package-card premium">
+            <div class="package-title">Pakiet rozszerzony</div>
+            <div class="package-desc">
+              Pełne wykończenie „pod klucz”<br />
+              Instalacje OZE<br />
+              Indywidualne udogodnienia
+            </div>
+            <a href="#zamowienie" class="package-cta">Wybierz pakiet</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Work Section -->
+      <section id="work" class="work container containerV">
+        <div class="heading_block">
+          <h1 class="font64">Zainspiruj się naszymi realizacjami</h1>
+          <!-- <div class="btn">
+                    <a class="btn_cnt" href="work.html" style="transform: translate3d(0px, 0px, 0px);">
+                        <span class="btn-text"><span data-text="Our Work">Our Work</span></span>
+                    </a>
+                </div> -->
+        </div>
+
+        <div class="project-container mT120">
+          <div class="projects">
+            <div class="project" id="header">
+              <div class="thumbnail">
+                <img src="./images/gallery/" alt="" />
+              </div>
+              <div class="client">
+                <p>Projekt</p>
+              </div>
+              <div class="location">
+                <p>Miejsce</p>
+              </div>
+              <div class="service">
+                <p>Kategoria</p>
+              </div>
+              <div class="year">
+                <p>Rok</p>
+              </div>
+            </div>
+
+            <div class="project" id="p1">
+              <div class="thumbnail">
+                <img src="./images/gallery/" alt="" />
+              </div>
+              <div class="client">
+                <p>Thameside Towers</p>
+              </div>
+              <div class="location">
+                <p>YHA London Themeside</p>
+              </div>
+              <div class="service">
+                <p>Apartments</p>
+              </div>
+              <div class="year">
+                <p>2023</p>
+              </div>
+            </div>
+
+            <div class="project" id="p2">
+              <div class="thumbnail">
+                <img src="./images/gallery/" alt="" />
+              </div>
+              <div class="client">
+                <p>Meadow View</p>
+              </div>
+              <div class="location">
+                <p>Birmingham, Nevada Way</p>
+              </div>
+              <div class="service">
+                <p>House</p>
+              </div>
+              <div class="year">
+                <p>2018</p>
+              </div>
+            </div>
+
+            <div class="project" id="p3">
+              <div class="thumbnail">
+                <img src="./images/gallery/" alt="" />
+              </div>
+              <div class="client">
+                <p>Glenwood Lodge</p>
+              </div>
+              <div class="location">
+                <p>Leeds, Alderton Heights</p>
+              </div>
+              <div class="service">
+                <p>Pent House</p>
+              </div>
+              <div class="year">
+                <p>2022</p>
+              </div>
+            </div>
+
+            <div class="project" id="p4">
+              <div class="thumbnail">
+                <img src="./images/gallery/" alt="" />
+              </div>
+              <div class="client">
+                <p>Tudor Oaks</p>
+              </div>
+              <div class="location">
+                <p>Manchester, Kingsway Street</p>
+              </div>
+              <div class="service">
+                <p>House</p>
+              </div>
+              <div class="year">
+                <p>2016</p>
+              </div>
+            </div>
+
+            <div class="project" id="p5">
+              div.thumbnail>img[src="./images/gallery/"]
+              <div class="client">
+                <p>Cityscape Suites</p>
+              </div>
+              <div class="location">
+                <p>London, Jermyn Street</p>
+              </div>
+              <div class="service">
+                <p>Apartments</p>
+              </div>
+              <div class="year">
+                <p>2015</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Awwards Section -->
+      <section id="prices" class="awwards container containerV">
+        <div class="heading_block">
+          <h1 class="font64">Awards and publications</h1>
+          <div class="btn">
+            <a
+              class="btn_cnt"
+              href="#a"
+              style="transform: translate3d(0px, 0px, 0px)"
+            >
+              <span class="btn-text"
+                ><span data-text="Show More">Show More</span></span
+              >
+            </a>
+          </div>
+        </div>
+
+        <div class="mT120" id="awwards">
+          <img src="./images/home/awwards1.webp" alt="awwards" loading="lazy" />
+          <img src="./images/home/awwards2.webp" alt="awwards" loading="lazy" />
+          <img src="./images/home/awwards3.webp" alt="awwards" loading="lazy" />
+        </div>
+      </section>
+
+      <!-- Block Section -->
+      <section class="block containerV">
+        <div class="image">
+          <img
+            src="./images/home/blockImg.webp"
+            alt="block_img"
+            loading="lazy"
+            data-scroll
+            data-scroll-speed="-2"
+          />
+        </div>
+        <div class="txt container">
+          <h1 class="font64">
+            "The days are perceived <span class="grey">as shorter</span> in the
+            new office, it is so pleasant to work here."
+          </h1>
+          <div class="mT50">
+            <p class="font20 font_B mT50">Luurt van de Ploeg</p>
+            <p class="font20 font_M mT20">
+              CFO VolkerWessels Construction & Real Estate Development
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Marquee Section -->
+      <section id="test" class="marquee_Section container containerV">
+        <div class="heading_block">
+          <h1 class="font64">Together we make the most beautiful things.</h1>
+          <div class="btn">
+            <a
+              class="btn_cnt"
+              href="kontakt.html"
+              style="transform: translate3d(0px, 0px, 0px)"
+            >
+              <span class="btn-text"
+                ><span data-text="Contact Us">Contact Us</span></span
+              >
+            </a>
+          </div>
+        </div>
+
+        <div class="marquee_cnt mT120">
+          <div class="marquee">
+            <ul class="marquee-content">
+              <li>
+                <img
+                  src="./images/home/brand-logo1.png"
+                  alt="client"
+                  loading="lazy"
+                />
+              </li>
+              <li>
+                <img
+                  src="./images/home/brand-logo2.png"
+                  alt="client"
+                  loading="lazy"
+                />
+              </li>
+              <li>
+                <img
+                  src="./images/home/brand-logo3.png"
+                  alt="client"
+                  loading="lazy"
+                />
+              </li>
+              <li>
+                <img
+                  src="./images/home/brand-logo4.png"
+                  alt="client"
+                  loading="lazy"
+                />
+              </li>
+              <li>
+                <img
+                  src="./images/home/brand-logo5.png"
+                  alt="client"
+                  loading="lazy"
+                />
+              </li>
+              <li>
+                <img
+                  src="./images/home/brand-logo6.png"
+                  alt="client"
+                  loading="lazy"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- full-image -->
+      <div class="containerV"></div>
+
+      <div class="image" data-scroll>
+        <img
+          src="./images/home/full-img.webp"
+          alt=""
+          data-scroll
+          data-scroll-speed="-2"
+        />
+      </div>
+
+      <!-- Footer -->
+      <footer id="contact">
+        <div class="container">
+          <div class="btn">
+            <a
+              class="btn_cnt"
+              href="kontakt.html"
+              style="transform: translate3d(0px, 0px, 0px)"
+            >
+              <span class="btn-text"
+                ><span data-text="Contact Us">Contact Us</span></span
+              >
+            </a>
+          </div>
+          <div class="footer_social">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-linkedin"></i>
+          </div>
+        </div>
+      </footer>
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

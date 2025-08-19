@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="./favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg" />
+    <link rel="shortcut icon" href="./favicon/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakt | Domy pod klucz</title>
+    <script src="https://www.google.com/recaptcha/api.js?render=%VITE_RECAPTCHA_SITE_KEY%"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  </head>
+  <body>
+    <!-- Navigation Menu -->
+    <div class="navigation_menu">
+        <div class="navigation_cnt">
+            <div class="nav_link">
+                <a href="index.html">Home</a>
+            </div>
+            <div class="nav_link">
+                <a href="projekty.html">Projekty</a>
+            </div>
+            <div class="nav_link">
+                <a href="o-nas.html">O nas</a>
+            </div>
+            <div class="nav_link">
+                <a href="kontakt.html">Kontakt</a>
+            </div>
+            <div class="navigation_social">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-linkedin"></i>
+            </div>
+            <div class="navigation_policies">
+                <a href="polityka-prywatnosci.html"> Polityka prywatności & Cookies</a>
+                <a href="cookies.html"> Wykorzystanie plików Cookies</a>
+                <a href="warunki-korzystania.html"> Warunki korzystania z serwisu</a>
+            </div>
+        </div>
+    </div>
+    <!-- Overlay -->
+    <div id="overlay"></div>
+    <div id="overlay2"></div>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav_cnt">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <h1 class="font26">Domy pod klucz</h1>
+            </div>
+            <div class="hamburger open_nav">
+                <svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <line x1="0" y1="17" x2="48" y2="17" stroke-width="1" />
+                        <line x1="0" y1="31" x2="48" y2="31" stroke-width="1" />
+                    </g>
+
+                    <g>
+                        <line x1="0" y1="24" x2="48" y2="24" stroke-width="1" />
+                        <line x1="0" y1="24" x2="48" y2="24" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </nav>
+
+    <!------------- ALL CONTENT ------------>
+    <main id="main">
+        <!-- Contact -->
+        <section class="contact container">
+            <div class="left">
+                <h1 class="font64">Let's get acquainted.</h1>
+                <p class="font26 mT50">
+                    We would like to invite you for a no-obligation introductory meeting in which we
+                    will listen to your wishes and explain the construction costs and the process.
+                </p>
+                <div class="btn mT80" id="appointment">
+                    <a class="btn_cnt" href="#a" style="transform: translate3d(0px, 0px, 0px);">
+                        <span class="btn-text"><span data-text="Make an Appointment">Make an Appointment</span></span>
+                    </a>
+                </div>
+                <div class="image mT120">
+                    <img src="./images/home/hero_img_3.webp" alt="contact_img" loading="lazy" data-scroll
+                        data-scroll-speed="-2">
+                </div>
+            </div>
+            <div class="right">
+                <p class="font26 font_B">Arch + partners architects BNA</p>
+                <p class="font20 mT20">Call us on <a href="#a">+92 1234567890 </a></p>
+                <p class="font20 mT20">Email to <a href="mailto:info@arch.com">info@arch.com</a></p>
+                <p class="font26 font_B mT50">Visiting address</p>
+                <p class="font20 mT20">Rozengaarde 18</p>
+                <p class="font20 mT20">7461 DB Rijssen</p>
+                <p class="font20 mT20">England</p>
+
+                <div class="image mT120">
+                    <img src="./images/home/method_2.webp" alt="contact_img" loading="lazy" data-scroll
+                        data-scroll-speed="-2">
+                </div>
+            </div>
+        </section>
+
+        <!-- full-image -->
+        <div class="containerV"></div>
+
+        <div class="image" data-scroll>
+            <img src="./images/home/full-img.webp" alt="" data-scroll data-scroll-speed="-2">
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="btn">
+                    <a class="btn_cnt" href="kontakt.html" style="transform: translate3d(0px, 0px, 0px);">
+                        <span class="btn-text"><span data-text="Contact Us">Contact Us</span></span>
+                    </a>
+                </div>
+                <div class="footer_social">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Appointment Slider Section -->
+    <div class="appointment_cnt">
+        <button class="close_app">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h1 class="font64">Free Introduction</h1>
+        <p class="font20 mT20">
+            Make an appointment for a no-obligation introductory meeting in which we will listen to your wishes and
+            explain the construction costs and the process. We will then contact you.
+        </p>
+        <form action="">
+            <input type="text" placeholder="Your Name*" name="name" required>
+            <input type="email" placeholder="Your Email Address*" name="email" required>
+            <input type="tel" placeholder="Your Phone Number*" name="phone" required>
+            <input type="submit" value="Send Message">
+        </form>
+        <img src="./images/home/hero_img_4.webp" class="mT80" alt="appointment image" loading="lazy">
+    </div>
+
+    <script type="module" src="/src/scripts/apointment.ts"></script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
