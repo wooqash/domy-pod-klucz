@@ -1,24 +1,34 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import './loco.css';
+import './style.css';
+import { animateNav } from './scripts/nav';
+import LocomotiveScroll from 'locomotive-scroll';
+import { marquee } from './scripts/marquee';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+document.addEventListener("DOMContentLoaded", function () {
+  const mainElement: HTMLElement | null = document.querySelector("#main");
+  let locoScroll;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+  locoScroll = new LocomotiveScroll({
+      el: mainElement || undefined,
+      smooth: true,
+      getDirection: true,
+      mobile: {
+          smooth: true,
+          inertia: 0.8,
+          getDirection: true,
+      },
+      tablet: {
+          smooth: true,
+          inertia: 0.8,
+          getDirection: true,
+      },
+  });
+
+  if(mainElement){
+  new ResizeObserver(() => locoScroll.update()).observe(
+      mainElement
+  );
+}
+  animateNav();
+  marquee();
+})
