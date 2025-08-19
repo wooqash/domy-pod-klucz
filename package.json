@@ -9,11 +9,15 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/locomotive-scroll": "^4.1.4",
     "@types/node": "^24.0.3",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
   },
   "dependencies": {
-    "imask": "^7.6.1"
+    "gsap": "^3.13.0",
+    "imask": "^7.6.1",
+    "locomotive-scroll": "^4.1.4",
+    "swiper": "^11.2.8"
   }
 }
