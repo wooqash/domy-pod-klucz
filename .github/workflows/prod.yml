@@ -1,4 +1,4 @@
-on: 
+on:
   push:
     branches: [main]
 name: 🚀 Deploy website to domypodklucz.pl via FTP
@@ -15,11 +15,11 @@ jobs:
           version: 9
       - uses: actions/setup-node@v4
         with:
-          cache: 'pnpm'
+          cache: "pnpm"
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Build
-        run: npm run build
+        run: pnpm run build
         env:
           VITE_RECAPTCHA_SITE_KEY: ${{ secrets.VITE_RECAPTCHA_SITE_KEY }}
       - name: Replace placeholders
