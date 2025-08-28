@@ -46,7 +46,7 @@ jobs:
           local-dir: ./dist/
           server-dir: /public_html/
 
-      - name: 📂 Sync src/api folder
+      - name: 📂 Sync src/php folder
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
