@@ -1,3 +1,5 @@
+import { trapFocus, releaseFocusTrap } from "./utils";
+
 function initGallery() {
   const projects = document.querySelectorAll<HTMLElement>(".project");
   const modal = document.querySelector<HTMLDivElement>(".modal")!;
@@ -8,11 +10,6 @@ function initGallery() {
   const btnNext = document.getElementById("next") as HTMLButtonElement;
   const counter = document.getElementById("counter")!;
   const backdrop = document.getElementById("backdrop") as HTMLDivElement;
-
-  let focusableElements: HTMLElement[] = [];
-  let firstFocusableEl: HTMLElement | null = null;
-  let lastFocusableEl: HTMLElement | null = null;
-  let focusTrapActive = false;
 
   type GalleryMap = {
     [key: string]: string[];
@@ -248,53 +245,6 @@ function initGallery() {
 
   let currentGallery: string[] = [];
   let currentIndex = 0;
-  let lastFocusedElement: HTMLElement | null = null;
-
-  function trapFocus(element: HTMLElement) {
-    if (focusTrapActive) return;
-    focusTrapActive = true;
-    focusableElements = Array.from(
-      element.querySelectorAll<HTMLElement>(
-        'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex]:not([tabindex="-1"]), [contenteditable]'
-      )
-    );
-    firstFocusableEl = focusableElements[0] || null;
-    lastFocusableEl = focusableElements[focusableElements.length - 1] || null;
-    lastFocusedElement = document.activeElement as HTMLElement;
-    console.log(lastFocusedElement);
-
-    element.addEventListener("keydown", focusTrapHandler);
-  }
-
-  function releaseFocusTrap() {
-    if (!focusTrapActive) return;
-    focusTrapActive = false;
-    modalContent.removeEventListener("keydown", focusTrapHandler);
-    console.log(lastFocusedElement);
-    if (lastFocusedElement) lastFocusedElement.focus();
-  }
-
-  function focusTrapHandler(e: KeyboardEvent) {
-    if (e.key !== "Tab") return;
-    if (focusableElements.length === 0) {
-      e.preventDefault();
-      return;
-    }
-
-    if (e.shiftKey) {
-      // Shift + Tab
-      if (document.activeElement === firstFocusableEl) {
-        e.preventDefault();
-        lastFocusableEl?.focus();
-      }
-    } else {
-      // Tab
-      if (document.activeElement === lastFocusableEl) {
-        e.preventDefault();
-        firstFocusableEl?.focus();
-      }
-    }
-  }
 
   function openModal(galleryId: string | undefined): void {
     if (!galleryId || !(galleryId in galleries)) return;
@@ -308,7 +258,7 @@ function initGallery() {
 
   function closeModal(): void {
     modal.classList.remove("active");
-    releaseFocusTrap();
+    releaseFocusTrap(modalContent);
   }
 
   function showImage(): void {
