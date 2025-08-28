@@ -17,11 +17,22 @@
   --color-persian-green: hsl(170, 89%, 32%); /*#099B83*/
   --color-raisin-black: hsl(0, 0%, 16%); /*#282828*/
   --color-gray: hsl(225, 2%, 51%); /*#818285*/
+  --color-royal-blue: hsl(217, 100%, 52%);
+  --color-green-blue: hsl(210, 90%, 40%);
+
+  --success-bg-color: hsl(114, 82%, 41%, 0.2);
+  --error-color: hsl(4, 96%, 60%);
+  --error-bg-color: hsl(1, 59%, 62%, 0.2);
 
   --body-text-color: var(--color-raisin-black);
   --body-bg-color: var(--color-white);
   --body-shadow-color: hsl(0, 0%, 0%, 20%);
   --body-link-color: var(--color-persian-green);
+
+  --facebook-bg-color: var(--color-royal-blue);
+  --linkedin-bg-color: var(--color-green-blue);
+
+  --border-radius-small: 4px;
 }
 
 * {
@@ -583,8 +594,78 @@ nav .nav_cnt .hamburger.-menu-open svg g:last-child line:last-child {
   transform: skewY(10deg);
 }
 
+.close {
+  box-sizing: border-box;
+  height: 48px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 48px;
+}
+.close svg {
+  stroke: #000;
+  transition: 0.2s;
+  width: 48px;
+  height: 48px;
+}
+.close svg g:first-child {
+  opacity: 1;
+  transition: opacity 0s 0.2s;
+}
+.close svg g:first-child line {
+  transition: transform 0.2s 0.2s;
+  transform: translateY(0px);
+}
+.close svg g:last-child {
+  opacity: 0;
+  transition: opacity 0s 0.2s;
+}
+.close svg g:last-child line {
+  transition: transform 0.2s;
+  transform: rotate(0deg);
+  transform-origin: center;
+}
+.close.-menu-open svg {
+  stroke: #fff;
+}
+.close.-menu-open svg g:first-child {
+  opacity: 0;
+}
+.close.-menu-open svg g:first-child line {
+  transition: transform 0.2s;
+}
+.close.-menu-open svg g:first-child line:first-child {
+  transform: translateY(7px);
+}
+.close.-menu-open svg g:first-child line:last-child {
+  transform: translateY(-7px);
+}
+.close.-menu-open svg g:last-child {
+  opacity: 1;
+}
+.close.-menu-open svg g:last-child line {
+  transition: transform 0.2s 0.2s;
+}
+.close.-menu-open svg g:last-child line:first-child {
+  transform: rotate(45deg);
+}
+.close.-menu-open svg g:last-child line:last-child {
+  transform: rotate(-45deg);
+}
+
 footer {
   padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+footer a {
+  color: var(--body-text-color);
+}
+footer a:hover {
+  color: var(--body-link-color);
 }
 @media only screen and (max-width: 1440px) {
   footer {
@@ -594,6 +675,7 @@ footer {
 @media only screen and (max-width: 1440px) and (max-width: 550px) {
   footer {
     padding: 50px 0;
+    gap: 32px;
   }
 }
 footer .container {
@@ -617,7 +699,7 @@ footer .container .footer_social {
   }
 }
 footer .container .footer_social i {
-  font-size: 36px;
+  font-size: 48px;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
   color: #000;
@@ -627,8 +709,27 @@ footer .container .footer_social i {
     font-size: 28px;
   }
 }
-footer .container .footer_social i:hover {
-  color: #828894;
+footer .container .footer_social i.fa-facebook:hover {
+  color: var(--facebook-bg-color);
+}
+footer .container .footer_social i.fa-linkedin:hover {
+  color: var(--linkedin-bg-color);
+}
+
+footer .contact-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-details ul {
+  list-style: none;
+}
+
+.contact-details i {
+  font-size: 26px;
+  margin-inline: 16px;
+  /* vertical-align: middle; */
 }
 
 a {
@@ -896,11 +997,19 @@ a {
 .cards-section {
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+@media only screen and (max-width: 870px) {
+  .cards-section {
+    gap: 75px;
+  }
 }
 
 /* Nagłówek sekcji */
 .offer-block {
-  margin-block-end: 72px;
+  /* margin-block-end: 72px; */
   text-align: left;
 }
 

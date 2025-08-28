@@ -10,7 +10,7 @@ type FormData = {
   name: string | undefined;
   email: string | undefined;
   phone: string | undefined;
-  subject: string | undefined;
+  // subject: string | undefined;
   message: string | undefined;
   recaptchaToken: unknown;
 };
@@ -37,7 +37,7 @@ const errorMessages: Record<string, errorTypes> = {
   name: { required: "Pole 'Imię i nazwisko' jest obowiązkowe!" },
   email: { required: "Pole 'Email' jest obowiązkowe!" },
   phone: { required: "Pole 'Telefon' jest obowiązkowe!" },
-  subject: { required: "Pole 'Temat' jest obowiązkowe!" },
+  // subject: { required: "Pole 'Temat' jest obowiązkowe!" },
   message: { required: "Pole 'Wiadomość' jest obowiązkowe!" },
 };
 
@@ -54,7 +54,7 @@ export const initContactForm = () => {
     name: document.querySelector("#name"),
     email: document.querySelector("#email"),
     phone: document.querySelector("#phone"),
-    subject: document.querySelector("#subject"),
+    // subject: document.querySelector("#subject"),
     message: document.querySelector("#message"),
   };
 
@@ -62,7 +62,7 @@ export const initContactForm = () => {
     name: document.querySelector("#nameError"),
     email: document.querySelector("#emailError"),
     phone: document.querySelector("#phoneError"),
-    subject: document.querySelector("#subjectError"),
+    // subject: document.querySelector("#subjectError"),
     message: document.querySelector("#messageError"),
   };
 
@@ -81,7 +81,7 @@ export const initContactForm = () => {
       name: inputs.name?.value.trim(),
       email: inputs.email?.value.trim(),
       phone: inputs.phone?.value.trim(),
-      subject: inputs.subject?.value.trim(),
+      // subject: inputs.subject?.value.trim(),
       message: inputs.message?.value.trim(),
       recaptchaToken: await getRecaptchaToken(),
     };
@@ -187,12 +187,12 @@ export const initContactForm = () => {
   inputs.name?.addEventListener("invalid", handleInvalid);
   inputs.email?.addEventListener("invalid", handleInvalid);
   inputs.phone?.addEventListener("invalid", handleInvalid);
-  inputs.subject?.addEventListener("invalid", handleInvalid);
+  // inputs.subject?.addEventListener("invalid", handleInvalid);
   inputs.message?.addEventListener("invalid", handleInvalid);
 
   inputs.name?.addEventListener("input", handleInput);
   inputs.email?.addEventListener("input", handleInput);
   inputs.phone?.addEventListener("input", handleInput);
-  inputs.subject?.addEventListener("input", handleInput);
+  // inputs.subject?.addEventListener("input", handleInput);
   inputs.message?.addEventListener("input", handleInput);
 };

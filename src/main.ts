@@ -4,6 +4,8 @@ import { animateNav } from "./scripts/nav";
 import LocomotiveScroll from "locomotive-scroll";
 import { marquee } from "./scripts/marquee";
 import initGallery from "./scripts/gallery";
+import { initContactForm } from "./scripts/contact-form";
+import { copyrightDate, protectInfo } from "./scripts/protect-info";
 
 document.addEventListener("DOMContentLoaded", function () {
   const mainElement: HTMLElement | null = document.querySelector("#main");
@@ -31,4 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   animateNav();
   marquee();
   initGallery();
+  initContactForm();
+  protectInfo();
+  copyrightDate();
 });
