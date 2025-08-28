@@ -15,16 +15,18 @@ document.addEventListener("DOMContentLoaded", function () {
     el: mainElement || undefined,
     smooth: true,
     getDirection: true,
-    mobile: {
+    smartphone: {
       smooth: true,
-      inertia: 0.8,
-      getDirection: true,
     },
     tablet: {
       smooth: true,
-      inertia: 0.8,
-      getDirection: true,
+      breakpoint: 0,
     },
+    // tablet: {
+    //   smooth: true,
+    //   // inertia: 0.8,
+    //   // getDirection: true,
+    // },
   });
 
   if (mainElement) {
