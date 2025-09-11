@@ -1994,7 +1994,8 @@ a {
 
 .side-menu {
   width: 35%;
-  height: 100%;
+  /* height: 100%; */
+  height: 100vh;
   position: fixed;
   right: 0;
   top: 0;
@@ -2025,6 +2026,7 @@ a {
 }
 .side-menu .form-container {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2040,7 +2042,8 @@ a {
 }
 @media only screen and (max-width: 870px) and (max-width: 550px) {
   .side-menu .form-container {
-    padding: 0;
+    padding-block: 80px;
+    padding-inline: 20px;
   }
 }
 .side-menu .form-container::-webkit-scrollbar {
@@ -2049,6 +2052,7 @@ a {
 
 .contact-form {
   color: var(--color-white);
+  height: 100%;
 }
 
 .contact-form h3 {
