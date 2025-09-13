@@ -747,6 +747,20 @@ footer .contact-content {
   gap: 16px;
 }
 
+footer .contact-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+@media only screen and (max-width: 870px) {
+  footer .contact-info {
+    flex-direction: column-reverse;
+    gap: 30px;
+  }
+}
+
 .contact-details ul {
   list-style: none;
 }
@@ -2322,7 +2336,7 @@ p.error-msg:empty {
   position: fixed;
   right: 24px;
   bottom: 92px;
-  z-index: 1000;
+  z-index: 9;
   background-color: var(--color-kelly-green);
   color: #fff;
   border: none;
