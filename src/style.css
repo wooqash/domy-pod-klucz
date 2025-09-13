@@ -2316,3 +2316,39 @@ p.error-msg:empty {
     background-color: #f9f9f9;
   }
 }
+
+.scrollToTopBtn {
+  /* display: none; */
+  position: fixed;
+  right: 24px;
+  bottom: 92px;
+  z-index: 1000;
+  background-color: var(--color-kelly-green);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.scrollToTopBtn svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.scrollToTopBtn.show {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.scrollToTopBtn:hover,
+.scrollToTopBtn:focus-visible {
+  background-color: var(--color-persian-green);
+}

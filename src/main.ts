@@ -6,31 +6,29 @@ import { marquee } from "./scripts/marquee";
 import initGallery from "./scripts/gallery";
 import { initContactForm } from "./scripts/contact-form";
 import { copyrightDate, protectInfo } from "./scripts/protect-info";
+import { initScrollToTopBtn } from "./scripts/scrollTop";
 
 document.addEventListener("DOMContentLoaded", function () {
-  const mainElement: HTMLElement | null = document.querySelector("#main");
-  let locoScroll;
-
-  locoScroll = new LocomotiveScroll({
-    el: mainElement || undefined,
-    smooth: true,
-    getDirection: true,
-    smartphone: {
-      smooth: true,
-    },
-    tablet: {
-      smooth: true,
-      breakpoint: 0,
-    },
-    // tablet: {
-    //   smooth: true,
-    //   // inertia: 0.8,
-    //   // getDirection: true,
-    // },
-  });
+  const mainElement: HTMLElement | null = document.querySelector(
+    "[data-scroll-container]"
+  );
 
   if (mainElement) {
+    const locoScroll = new LocomotiveScroll({
+      el: mainElement,
+      smooth: true,
+      getDirection: true,
+      smartphone: {
+        smooth: true,
+      },
+      tablet: {
+        smooth: true,
+        breakpoint: 0,
+      },
+    });
+
     new ResizeObserver(() => locoScroll.update()).observe(mainElement);
+    initScrollToTopBtn(locoScroll);
   }
   animateNav();
   marquee();
