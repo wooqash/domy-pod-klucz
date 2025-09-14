@@ -34,8 +34,11 @@ export function animateNav() {
   }
 
   function toggleSideNav(e: Event) {
-    const target = e.currentTarget as HTMLAnchorElement | HTMLButtonElement;
-    const formType = target.getAttribute("data-form-type");
+    const target =
+      e.type !== "keydown"
+        ? (e?.currentTarget as HTMLAnchorElement | HTMLButtonElement)
+        : null;
+    const formType = target?.getAttribute("data-form-type");
 
     if (sideNav && sideNav.progress() === 1) {
       sideNav.reverse().eventCallback("onReverseComplete", () => {
@@ -128,6 +131,6 @@ export function animateNav() {
   overlay2?.addEventListener("click", toggleSideNav);
   document.addEventListener("keydown", (e: KeyboardEvent) => {
     if (!overlay2?.classList.contains("active")) return;
-    if (e.key === "Escape") toggleSideNav();
+    if (e.key === "Escape") toggleSideNav(e);
   });
 }
