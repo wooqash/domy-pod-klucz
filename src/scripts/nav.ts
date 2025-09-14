@@ -17,6 +17,9 @@ export function animateNav() {
   const overlay2: HTMLDivElement | null = document.querySelector("#overlay2");
   const navigation = createNavigationTimeline();
   const sideNav = createSideNavTimeline();
+  const contactForm = document.querySelector("#contactForm");
+  const offerForm = document.querySelector("#offerForm");
+  const offerType = document.querySelector(".offer-type");
 
   function toggleNavigation() {
     if (navigation && navigation.progress() === 1) {
@@ -30,12 +33,17 @@ export function animateNav() {
     button?.classList.toggle("-menu-open");
   }
 
-  function toggleSideNav() {
+  function toggleSideNav(e: Event) {
+    const target = e.currentTarget as HTMLAnchorElement | HTMLButtonElement;
+    const formType = target.getAttribute("data-form-type");
+
     if (sideNav && sideNav.progress() === 1) {
       sideNav.reverse().eventCallback("onReverseComplete", () => {
         overlay2?.classList.remove("active");
         if (sideMenuContent) releaseFocusTrap(sideMenuContent);
       });
+      contactForm?.classList.remove("show");
+      offerForm?.classList.remove("show");
     } else {
       sideNav.play();
       overlay2?.classList.add("active");
@@ -43,6 +51,16 @@ export function animateNav() {
       setTimeout(() => {
         closeButton?.focus();
       }, 500);
+      if (formType === "contactForm") {
+        contactForm?.classList.add("show");
+      }
+      if (formType === "offerForm") {
+        offerForm?.classList.add("show");
+
+        if (offerType) {
+          offerType.textContent = setOfferType(target as HTMLButtonElement);
+        }
+      }
     }
     closeButton?.classList.toggle("-menu-open");
   }
@@ -85,6 +103,20 @@ export function animateNav() {
         },
         "-=.5"
       );
+  }
+
+  function setOfferType(target: HTMLButtonElement) {
+    const offerType = target.getAttribute("data-offer-type");
+    switch (offerType) {
+      case "basic":
+        return "podstawowy";
+      case "optimal":
+        return "optymalny";
+      case "extended":
+        return "rozszerzony";
+      default:
+        return "optymalny";
+    }
   }
 
   hamburger?.addEventListener("click", toggleNavigation);

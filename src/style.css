@@ -1125,6 +1125,7 @@ a {
   text-decoration: none;
   transition: background 0.2s, color 0.2s, border 0.2s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
 }
 
 /* Pakiet podstawowy: szarość */
@@ -2064,17 +2065,26 @@ a {
   display: none;
 }
 
-.contact-form {
+.side-menu-form {
   color: var(--color-white);
+  display: none;
   height: 100%;
 }
 
-.contact-form h3 {
+.side-menu-form.show {
+  display: block;
+}
+
+.side-menu-form h3 {
   margin-block: 1.5rem;
 }
 
-.contact-form form {
+.side-menu-form form {
   margin-block: 1.5rem;
+}
+
+.side-menu .offer-type {
+  text-transform: uppercase;
 }
 
 .form-group {
