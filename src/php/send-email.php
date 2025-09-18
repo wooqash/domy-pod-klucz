@@ -28,7 +28,8 @@ try {
         $name = htmlspecialchars($input['name'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5);
         $email = filter_var($input['email'] ?? '', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $phone = htmlspecialchars($input['phone'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5);
-        $subject = htmlspecialchars($input['subject'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5);
+        $formType = htmlspecialchars($input['formType'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5);
+        $offerType = htmlspecialchars($input['offerType'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5);
         $message = htmlspecialchars($input['message'] ?? '', ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5);
         $recaptchaToken = $input['recaptchaToken'] ?? '';
 
@@ -47,7 +48,7 @@ try {
         if (empty($name)) $errors[] = 'Imię i nazwisko jest wymagane';
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'Niepoprawny format email';
         if (!preg_match('/^[0-9+\- ]{15,17}$/', $phone)) $errors[] = 'Niepoprawny format telefonu';
-        if (empty($subject)) $errors[] = 'Temat jest wymagany';
+        // if (empty($subject)) $errors[] = 'Temat jest wymagany';
         if (empty($message)) $errors[] = 'Wiadomość nie może być pusta';
 
         if (!empty($errors)) {
@@ -62,21 +63,17 @@ try {
         $headers .= "Reply-To: " . $email . "\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-        if ($subject) {
-            switch ($subject) {
-                case "services":
-                    $subject = "[USLUGI]";
+        if ($formType) {
+            switch ($formType) {
+                case "contactForm":
+                    $subject = "Zapytanie z formularza kontaktowego";
                     break;
-                case "warehouse":
-                    $subject = "[HURTOWNIA]";
-                    break;
-                case "others":
-                    $subject = "[INNE]";
+                case "offerForm":
+                    $subject = "Zapytanie o - ".$offerType;
                     break;
             }
         }
 
-        $subject = $subject . " - zapytanie z formularza kontaktowego";
         $emailBody = "
         <html>
                         <head>

@@ -4,7 +4,7 @@ import { animateNav } from "./scripts/nav";
 import LocomotiveScroll from "locomotive-scroll";
 import { marquee } from "./scripts/marquee";
 import initGallery from "./scripts/gallery";
-import { initContactForm } from "./scripts/contact-form";
+import { initForms } from "./scripts/forms";
 import { copyrightDate, protectInfo } from "./scripts/protect-info";
 import { initScrollToTopBtn } from "./scripts/scrollTop";
 
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   animateNav();
   marquee();
   initGallery();
-  initContactForm();
+  initForms();
   protectInfo();
   copyrightDate();
 });

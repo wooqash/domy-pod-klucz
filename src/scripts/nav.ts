@@ -17,8 +17,8 @@ export function animateNav() {
   const overlay2: HTMLDivElement | null = document.querySelector("#overlay2");
   const navigation = createNavigationTimeline();
   const sideNav = createSideNavTimeline();
-  const contactForm = document.querySelector("#contactForm");
-  const offerForm = document.querySelector("#offerForm");
+  const contactForm = document.querySelector("#contactFormContainer");
+  const offerForm = document.querySelector("#offerFormContainer");
   const offerType = document.querySelector(".offer-type");
 
   function toggleNavigation() {
@@ -54,10 +54,10 @@ export function animateNav() {
       setTimeout(() => {
         closeButton?.focus();
       }, 500);
-      if (formType === "contactForm") {
+      if (formType === "contactFormContainer") {
         contactForm?.classList.add("show");
       }
-      if (formType === "offerForm") {
+      if (formType === "offerFormContainer") {
         offerForm?.classList.add("show");
 
         if (offerType) {

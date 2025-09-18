@@ -627,7 +627,7 @@
                 Atrakcyjna cena
               </div>
               <button
-                data-form-type="offerForm"
+                data-form-type="offerFormContainer"
                 data-offer-type="basic"
                 class="package-cta open-side-menu"
               >
@@ -642,7 +642,7 @@
                 Energooszczędność w standardzie
               </div>
               <button
-                data-form-type="offerForm"
+                data-form-type="offerFormContainer"
                 data-offer-type="optimal"
                 href="#zamowienie"
                 class="package-cta open-side-menu"
@@ -659,7 +659,7 @@
                 Indywidualne udogodnienia
               </div>
               <button
-                data-form-type="offerForm"
+                data-form-type="offerFormContainer"
                 data-offer-type="extended"
                 href="#zamowienie"
                 class="package-cta open-side-menu"
@@ -685,7 +685,7 @@
             projekt możesz dopasować do swojej działki i potrzeb rodziny.
             <a
               href="#contact"
-              data-form-type="contactForm"
+              data-form-type="contactFormContainer"
               class="open-side-menu"
               >Skontaktuj się z nami</a
             >, aby omówić swój wymarzony dom. Razem przeprowadzimy Cię przez
@@ -1070,7 +1070,7 @@
 
             <div class="btn">
               <button
-                data-form-type="contactForm"
+                data-form-type="contactFormContainer"
                 class="btn_cnt open-side-menu"
                 style="transform: translate3d(0px, 0px, 0px)"
               >
@@ -1149,7 +1149,7 @@
             </g>
           </svg>
         </button>
-        <div id="contactForm" class="side-menu-form">
+        <div id="contactFormContainer" class="side-menu-form">
           <h3>Wiadomość</h3>
           <p>
             Zostaw nam swoje dane. Obiecujemy, że bez Twojej zgody nikomu ich
@@ -1157,7 +1157,7 @@
             się odpowiedzić Tobie jak najszybciej się da!
           </p>
           <form id="contactForm" novalidate>
-            <div id="nameControl" class="form-group">
+            <div class="form-group">
               <label for="name">Imię i nazwisko*</label>
               <input
                 type="text"
@@ -1168,13 +1168,12 @@
                 autocomplete="on"
                 required
               />
-              <p class="error-msg" id="nameError"></p>
+              <p class="error-msg"></p>
             </div>
             <div class="form-group">
               <label for="email">Email*</label>
               <input
                 type="email"
-                id="email"
                 name="email"
                 placeholder="np. jan.kowalski@email.com"
                 class="form-control"
@@ -1182,13 +1181,12 @@
                 required
                 pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
               />
-              <div class="error-msg" id="emailError"></div>
+              <p class="error-msg"></p>
             </div>
             <div class="form-group">
               <label for="phone">Telefon*</label>
               <input
                 type="tel"
-                id="phone"
                 name="phone"
                 placeholder="np. +48 999-999-999"
                 class="form-control"
@@ -1196,29 +1194,17 @@
                 required
                 pattern="^[0-9+\- ]{15,17}$"
               />
-              <div class="error-msg" id="phoneError"></div>
+              <p class="error-msg"></p>
             </div>
-            <!-- <div class="form-group">
-                <label for="subject">Temat*</label>
-                <select id="subject" name="subject" class="form-control" required>
-                  <option value="">Wybierz temat</option>
-                  <option value="services">Budowa domu</option>
-                  <option value="valuation">Wycena projektu</option>
-                  <option value="request">Zapytanie ofertowe</option>
-                  <option value="others">Inne</option>
-                </select>
-                <div class="error-msg" id="subjectError"></div>
-              </div> -->
             <div class="form-group">
               <label for="message">Wiadomość*</label>
               <textarea
-                id="message"
                 name="message"
                 placeholder="Napisz w czym możemy Ci pomóc"
                 class="form-control"
                 required
               ></textarea>
-              <div class="error-msg" id="messageError"></div>
+              <p class="error-msg"></p>
             </div>
             <p class="asterix">* Pola wymagane</p>
             <div class="btn">
@@ -1295,9 +1281,9 @@
               </button>
             </div>
           </form>
-          <p id="formMessage" class="form-msg hidden"></p>
+          <p class="form-msg hidden"></p>
         </div>
-        <div id="offerForm" class="side-menu-form">
+        <div id="offerFormContainer" class="side-menu-form">
           <h3>Świetny wybór - pierwszy krok za Tobą!</h3>
           <p>
             Wybrałeś pakiet <span class="offer-type font_B"></span>! Zostaw nam
@@ -1306,25 +1292,23 @@
             pozwolą nam lepiej zorientować się w Twoich potrzebach, poprostu
             wpiszę je w polu Wiadomość.
           </p>
-          <form id="contactForm" novalidate>
-            <div id="nameControl" class="form-group">
+          <form id="offerForm" novalidate>
+            <div class="form-group">
               <label for="name">Imię i nazwisko*</label>
               <input
                 type="text"
-                id="name"
                 name="name"
                 placeholder="np. Jan Kowalski"
                 class="form-control"
                 autocomplete="on"
                 required
               />
-              <p class="error-msg" id="nameError"></p>
+              <p class="error-msg"></p>
             </div>
             <div class="form-group">
               <label for="email">Email*</label>
               <input
                 type="email"
-                id="email"
                 name="email"
                 placeholder="np. jan.kowalski@email.com"
                 class="form-control"
@@ -1332,13 +1316,12 @@
                 required
                 pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
               />
-              <div class="error-msg" id="emailError"></div>
+              <p class="error-msg"></p>
             </div>
             <div class="form-group">
               <label for="phone">Telefon*</label>
               <input
                 type="tel"
-                id="phone"
                 name="phone"
                 placeholder="np. +48 999-999-999"
                 class="form-control"
@@ -1346,28 +1329,16 @@
                 required
                 pattern="^[0-9+\- ]{15,17}$"
               />
-              <div class="error-msg" id="phoneError"></div>
+              <p class="error-msg"></p>
             </div>
-            <!-- <div class="form-group">
-                <label for="subject">Temat*</label>
-                <select id="subject" name="subject" class="form-control" required>
-                  <option value="">Wybierz temat</option>
-                  <option value="services">Budowa domu</option>
-                  <option value="valuation">Wycena projektu</option>
-                  <option value="request">Zapytanie ofertowe</option>
-                  <option value="others">Inne</option>
-                </select>
-                <div class="error-msg" id="subjectError"></div>
-              </div> -->
             <div class="form-group">
               <label for="message">Wiadomość</label>
               <textarea
-                id="message"
                 name="message"
                 placeholder="Napisz w czym możemy Ci pomóc"
                 class="form-control"
               ></textarea>
-              <div class="error-msg" id="messageError"></div>
+              <p class="error-msg"></p>
             </div>
             <div class="btn">
               <button type="submit" class="btn_cnt_reverse">
@@ -1443,7 +1414,7 @@
               </button>
             </div>
           </form>
-          <p id="formMessage" class="form-msg hidden"></p>
+          <p class="form-msg hidden"></p>
         </div>
       </div>
     </div>

@@ -1,16 +1,11 @@
 import IMask from "imask";
 
-type FormControls = Record<
-  string,
-  HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null
->;
-type FormErrorControls = Record<string, HTMLParagraphElement | null>;
-
 type FormData = {
   name: string | undefined;
   email: string | undefined;
   phone: string | undefined;
-  // subject: string | undefined;
+  formType: string | undefined;
+  offerType: string | undefined;
   message: string | undefined;
   recaptchaToken: unknown;
 };
@@ -37,52 +32,54 @@ const errorMessages: Record<string, errorTypes> = {
   name: { required: "Pole 'Imię i nazwisko' jest obowiązkowe!" },
   email: { required: "Pole 'Email' jest obowiązkowe!" },
   phone: { required: "Pole 'Telefon' jest obowiązkowe!" },
-  // subject: { required: "Pole 'Temat' jest obowiązkowe!" },
   message: { required: "Pole 'Wiadomość' jest obowiązkowe!" },
 };
 
-export const initContactForm = () => {
-  const form: HTMLFormElement | null = document.querySelector("#contactForm");
+export const initForms = () => {
+  createForm("contactForm");
+  createForm("offerForm");
+};
+
+export const createForm = (formId: string) => {
+  const form: HTMLFormElement | null = document.querySelector(`#${formId}`);
+
+  if (!form) {
+    return;
+  }
   const submitBtn: HTMLButtonElement | null = document.querySelector(
-    "button[type=submit]"
+    `#${formId} button[type=submit]`
   );
-  const formMessage: HTMLElement | null =
-    document.getElementById("formMessage");
-  const errors: NodeListOf<HTMLParagraphElement> | null =
-    document.querySelectorAll(".error-msg");
-  const inputs: FormControls = {
-    name: document.querySelector("#name"),
-    email: document.querySelector("#email"),
-    phone: document.querySelector("#phone"),
-    // subject: document.querySelector("#subject"),
-    message: document.querySelector("#message"),
-  };
-
-  const errorMessagesControls: FormErrorControls = {
-    name: document.querySelector("#nameError"),
-    email: document.querySelector("#emailError"),
-    phone: document.querySelector("#phoneError"),
-    // subject: document.querySelector("#subjectError"),
-    message: document.querySelector("#messageError"),
-  };
-
+  const formMessage: HTMLElement | null = document.getElementById(
+    `#${formId} .form-msg`
+  );
+  const errorControls: NodeListOf<HTMLParagraphElement> | null =
+    document.querySelectorAll(`#${formId} .error-msg`);
+  const formControls: NodeListOf<
+    HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+  > = document.querySelectorAll(`#${formId} .form-control`);
+  const inputs = Array.from(formControls);
+  const errors = Array.from(errorControls);
+  const phoneInput = inputs.find(input => input.name === "phone");
   const phoneMaskOptions = {
     mask: "+{00} 000-00[0-0]00",
   };
-  if (inputs.phone) {
-    IMask(inputs.phone, phoneMaskOptions);
+
+  if (phoneInput) {
+    IMask(phoneInput, phoneMaskOptions);
   }
 
   form?.addEventListener("submit", async e => {
     e.preventDefault();
     clearErrors();
-
+    const inputMap = inputs.map(input => [input.name, input.value?.trim()]);
+    const inputsData = Object.fromEntries(inputMap);
     const formData: FormData = {
-      name: inputs.name?.value.trim(),
-      email: inputs.email?.value.trim(),
-      phone: inputs.phone?.value.trim(),
-      // subject: inputs.subject?.value.trim(),
-      message: inputs.message?.value.trim(),
+      ...inputsData,
+      formType: formId,
+      offerType:
+        formId === "offerForm"
+          ? document.querySelector(".offer-type")?.textContent
+          : "",
       recaptchaToken: await getRecaptchaToken(),
     };
 
@@ -96,9 +93,10 @@ export const initContactForm = () => {
       | HTMLInputElement
       | HTMLTextAreaElement
       | HTMLSelectElement;
-    const errorElement = target.id ? errorMessagesControls[target.id] : null;
-    const errorRequiredMessage = target.id
-      ? errorMessages[target.id].required
+    const index = target ? inputs.indexOf(target) : -1;
+    const errorElement = errors[index] || null;
+    const errorRequiredMessage = target.name
+      ? errorMessages[target.name].required
       : null;
 
     if (!target.value && errorRequiredMessage) {
@@ -115,7 +113,8 @@ export const initContactForm = () => {
       | HTMLInputElement
       | HTMLTextAreaElement
       | HTMLSelectElement;
-    const errorElement = target.id ? errorMessagesControls[target.id] : null;
+    const index = target ? inputs.indexOf(target) : -1;
+    const errorElement = errors[index] || null;
 
     if (target.value) {
       target.setCustomValidity("");
@@ -169,8 +168,8 @@ export const initContactForm = () => {
   }
 
   function clearErrors() {
-    if (errors) {
-      Array.from(errors).forEach(el => {
+    if (errorControls) {
+      Array.from(errorControls).forEach(el => {
         el.textContent = "";
       });
     }
@@ -184,15 +183,8 @@ export const initContactForm = () => {
     }
   }
 
-  inputs.name?.addEventListener("invalid", handleInvalid);
-  inputs.email?.addEventListener("invalid", handleInvalid);
-  inputs.phone?.addEventListener("invalid", handleInvalid);
-  // inputs.subject?.addEventListener("invalid", handleInvalid);
-  inputs.message?.addEventListener("invalid", handleInvalid);
-
-  inputs.name?.addEventListener("input", handleInput);
-  inputs.email?.addEventListener("input", handleInput);
-  inputs.phone?.addEventListener("input", handleInput);
-  // inputs.subject?.addEventListener("input", handleInput);
-  inputs.message?.addEventListener("input", handleInput);
+  inputs.forEach(input => {
+    input.addEventListener("invalid", handleInvalid);
+    input.addEventListener("input", handleInput);
+  });
 };
