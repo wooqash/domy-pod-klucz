@@ -49,8 +49,8 @@ export const createForm = (formId: string) => {
   const submitBtn: HTMLButtonElement | null = document.querySelector(
     `#${formId} button[type=submit]`
   );
-  const formMessage: HTMLElement | null = document.getElementById(
-    `#${formId} .form-msg`
+  const formMessage: HTMLElement | null = document.querySelector(
+    `#${formId}Container .form-msg`
   );
   const errorControls: NodeListOf<HTMLParagraphElement> | null =
     document.querySelectorAll(`#${formId} .error-msg`);

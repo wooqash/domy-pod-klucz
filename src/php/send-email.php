@@ -49,7 +49,7 @@ try {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'Niepoprawny format email';
         if (!preg_match('/^[0-9+\- ]{15,17}$/', $phone)) $errors[] = 'Niepoprawny format telefonu';
         // if (empty($subject)) $errors[] = 'Temat jest wymagany';
-        if (empty($message)) $errors[] = 'Wiadomość nie może być pusta';
+        if ($formType == "offerForm" && empty($message)) $errors[] = 'Wiadomość nie może być pusta';
 
         if (!empty($errors)) {
             http_response_code(400);
@@ -69,7 +69,7 @@ try {
                     $subject = "Zapytanie z formularza kontaktowego";
                     break;
                 case "offerForm":
-                    $subject = "Zapytanie o - ".$offerType;
+                    $subject = "Zapytanie o pakiet - ".$offerType;
                     break;
             }
         }

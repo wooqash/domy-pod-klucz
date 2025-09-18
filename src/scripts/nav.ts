@@ -20,6 +20,7 @@ export function animateNav() {
   const contactForm = document.querySelector("#contactFormContainer");
   const offerForm = document.querySelector("#offerFormContainer");
   const offerType = document.querySelector(".offer-type");
+  const formMsg = document.querySelector(".form-msg");
 
   function toggleNavigation() {
     if (navigation && navigation.progress() === 1) {
@@ -47,6 +48,10 @@ export function animateNav() {
       });
       contactForm?.classList.remove("show");
       offerForm?.classList.remove("show");
+      if (formMsg) {
+        formMsg.textContent = "";
+        formMsg.classList.add("hidden");
+      }
     } else {
       sideNav.play();
       overlay2?.classList.add("active");
