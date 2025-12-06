@@ -15,25 +15,25 @@ export const protectInfo = () => {
 
   const phone1 = document.querySelectorAll(".phone-1");
 
-  Array.from(email1).forEach(
-    email =>
-      (email.innerHTML =
-        '<a href="mailto:' +
-        emailAddress1 +
-        '" class="hover-underline">' +
-        emailAddress1 +
-        "</a>")
-  );
+  Array.from(email1).forEach(email => {
+    const text = email.textContent || emailAddress1;
+    return (email.innerHTML =
+      '<a href="mailto:' +
+      emailAddress1 +
+      '" class="hover-underline">' +
+      text +
+      "</a>");
+  });
 
-  Array.from(phone1).forEach(
-    email =>
-      (email.innerHTML =
-        '<a href="callto:' +
-        phoneNumb1.replaceAll(" ", "") +
-        '" class="hover-underline">' +
-        phoneNumb1 +
-        "</a>")
-  );
+  Array.from(phone1).forEach(phone => {
+    const text = phone.textContent || phoneNumb1;
+    return (phone.innerHTML =
+      '<a href="callto:' +
+      phoneNumb1.replaceAll(" ", "") +
+      '" class="hover-underline">' +
+      text +
+      "</a>");
+  });
 };
 
 export const copyrightDate = (): void => {

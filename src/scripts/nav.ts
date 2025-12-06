@@ -116,14 +116,14 @@ export function animateNav() {
   function setOfferType(target: HTMLButtonElement) {
     const offerType = target.getAttribute("data-offer-type");
     switch (offerType) {
-      case "basic":
-        return "podstawowy";
-      case "optimal":
-        return "optymalny";
-      case "extended":
-        return "rozszerzony";
+      case "standard":
+        return "standard";
+      case "comfort":
+        return "komfort";
+      case "premium":
+        return "premium";
       default:
-        return "optymalny";
+        return "komfort";
     }
   }
 

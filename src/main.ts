@@ -7,6 +7,7 @@ import initGallery from "./scripts/gallery";
 import { initForms } from "./scripts/forms";
 import { copyrightDate, protectInfo } from "./scripts/protect-info";
 import { initScrollToTopBtn } from "./scripts/scrollTop";
+import initTestimonialSlider from "./scripts/testimonials";
 
 document.addEventListener("DOMContentLoaded", function () {
   const mainElement: HTMLElement | null = document.querySelector(
@@ -36,4 +37,5 @@ document.addEventListener("DOMContentLoaded", function () {
   initForms();
   protectInfo();
   copyrightDate();
+  initTestimonialSlider();
 });
