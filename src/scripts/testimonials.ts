@@ -8,7 +8,7 @@ function initTestimonialSlider() {
 
   let currentIndex = 0;
   let isPaused = false;
-  let intervalId = null;
+  let intervalId: string | number | NodeJS.Timeout | undefined = undefined;
   const INTERVAL = 5000;
 
   function showSlide(index: number) {
@@ -36,7 +36,7 @@ function initTestimonialSlider() {
 
   function stopAuto() {
     clearInterval(intervalId);
-    intervalId = null;
+    intervalId = undefined;
   }
 
   nextBtn?.addEventListener("click", () => {
