@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied'
+    });
+      </script>
     <meta charset="UTF-8" />
     <link
       rel="icon"
@@ -30,45 +38,107 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
+    <script src="/scripts/silktide-consent-manager.js"></script> 
+    <script>
+      if(silktideCookieBannerManager) {
+        silktideCookieBannerManager.updateCookieBannerConfig({
+          background: {
+            showBackground: true
+          },
+          cookieIcon: {
+            position: "bottomLeft"
+          },
+          cookieTypes: [
+            {
+              id: "niezb_dne",
+              name: "Niezbędne",
+              description: "<p>Te pliki cookie są niezbędne do prawidłowego funkcjonowania strony internetowej i nie można ich wyłączyć. Pomagają one między innymi w logowaniu się i ustawianiu preferencji dotyczących prywatności.</p>",
+              required: true,
+              onAccept: function() {
+                console.log('Add logic for the required Niezbędne here');
+              }
+            },
+            {
+              id: "analityka",
+              name: "Analityka",
+              description: "<p>Te pliki cookie pomagają nam ulepszać stronę poprzez śledzenie, które strony są najpopularniejsze i w jaki sposób użytkownicy poruszają się po stronie.</p>",
+              required: false,
+              onAccept: function() {
+                
+                  gtag('consent', 'update', {
+                    analytics_storage: 'granted',
+                  });
+                  dataLayer.push({
+                    'event': 'consent_accepted_analityka',
+                  });
+                
+                
+              },
+              onReject: function() {
+                
+                  gtag('consent', 'update', {
+                    analytics_storage: 'denied',
+                  });
+                       
+              }
+            },
+            {
+              id: "reklama",
+              name: "Reklama",
+              description: "<p>Te pliki cookie zapewniają dodatkowe funkcje i personalizację w celu poprawy komfortu użytkowania. Mogą być ustawiane przez nas lub przez partnerów, z których usług korzystamy.</p>",
+              required: false,
+              onAccept: function() {
+                
+                  gtag('consent', 'update', {
+                    ad_storage: 'granted',
+                    ad_user_data: 'granted',
+                    ad_personalization: 'granted',
+                  });
+                  dataLayer.push({
+                    'event': 'consent_accepted_reklama',
+                  });
+                
+              },
+              onReject: function() {
+                
+                  gtag('consent', 'update', {
+                    ad_storage: 'denied',
+                    ad_user_data: 'denied',
+                    ad_personalization: 'denied',
+                  });
+                
+              }
+            }
+          ],
+          text: {
+            banner: {
+              description: "<p>W naszej witrynie używamy plików cookie, aby poprawić komfort użytkowania, dostarczać spersonalizowane treści i analizować ruch na stronie. <a href=\"https://your-website.com/cookie-policy\" target=\"_blank\">Cookie Policy.</a></p>",
+              acceptAllButtonText: "Zaakceptuj wszystko",
+              acceptAllButtonAccessibleLabel: "Akceptuj wszystkie pliki cookie",
+              rejectNonEssentialButtonText: "Odrzuć nieistotne",
+              rejectNonEssentialButtonAccessibleLabel: "Odrzuć nieistotne",
+              preferencesButtonText: "Preferencje",
+              preferencesButtonAccessibleLabel: "Przełącz preferencje"
+            },
+            preferences: {
+              title: "Dostosuj swoje preferencje dotyczące plików cookie",
+              description: "<p>Szanujemy Twoje prawo do prywatności. Możesz zrezygnować z niektórych rodzajów plików cookie. Twoje preferencje dotyczące plików cookie będą miały zastosowanie w całej naszej witrynie internetowej.</p>",
+              creditLinkText: "Pobierz ten baner za darmo",
+              creditLinkAccessibleLabel: "Pobierz ten baner za darmo"
+            }
+          },
+          position: {
+            banner: "bottomLeft"
+          }
+        });
+      }
+    </script>
   </head>
 
   <body>
-    <!-- Navigation Menu -->
-    <div class="navigation_menu">
-      <div class="navigation_cnt">
-        <div class="nav_link">
-          <a href="index.html">Home</a>
-        </div>
-        <div class="nav_link">
-          <a href="projekty.html">Projekty</a>
-        </div>
-        <div class="nav_link">
-          <a href="o-nas.html">O nas</a>
-        </div>
-        <div class="nav_link">
-          <a href="kontakt.html">Kontakt</a>
-        </div>
-        <div class="navigation_social">
-          <a
-            href="https://www.facebook.com/domypodklucz/"
-            target="_blank"
-            rel="noopener"
-            ><i class="fa-brands fa-facebook"></i
-          ></a>
-          <!-- <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-linkedin"></i> -->
-        </div>
-        <div class="navigation_policies">
-          <a href="polityka-prywatnosci.html">
-            Polityka prywatności & Cookies</a
-          >
-          <a href="cookies.html"> Wykorzystanie plików Cookies</a>
-          <a href="warunki-korzystania.html"> Warunki korzystania z serwisu</a>
-        </div>
-      </div>
-    </div>
+    
     <!-- Overlays -->
-    <div id="overlay"></div>
+    
     <div id="overlay2"></div>
     <!-- Navbar -->
     <nav>
@@ -76,14 +146,14 @@
         <div class="logo">
           <a class="logo-link" href="#hero" title="Idź do strony głównej">
             <img
-              src="./logo/logo-dark.svg"
+              src="./logo/cropped-icon-dark.svg"
               alt="Ikona z logotypu firmy Domy pod klucz"
-              width="80"
-              height="80"
+              width="60"
+              height="60"
             />
           </a>
         </div>
-        <!-- <div class="hamburger open_nav">
+        <div class="hamburger open_nav">
             <svg
               viewBox="0 0 48 48"
               version="1.1"
@@ -99,12 +169,54 @@
                 <line x1="0" y1="24" x2="48" y2="24" stroke-width="1" />
               </g>
             </svg>
-          </div> -->
+          </div>
       </div>
     </nav>
 
+    
+    
+     
     <!------------- ALL CONTENT ------------>
     <main id="main" data-scroll-container>
+      
+      <!-- Navigation Menu -->
+      <div class="navigation_menu">
+      <div class="navigation_cnt">
+        <!-- <div class="nav_link"> -->
+          <a class="menu-link" href="#hero">Home</a>
+        <!-- </div> -->
+        <!-- <div class="nav_link"> -->
+          <a class="menu-link" href="#aboutus" data-scroll-to>O nas</a>
+        <!-- </div> -->
+        <!-- <div class="nav_link"> -->
+          <a class="menu-link" href="#offer"  data-scroll-to>Oferta</a>
+        <!-- </div> -->
+        <!-- <div class="nav_link"> -->
+          <a class="menu-link" href="#projects"  data-scroll-to>Realizacje</a>
+        <!-- </div> -->
+        <!-- <div class="nav_link"> -->
+          <a class="menu-link" href="#contact"  data-scroll-to>Kontakt</a>
+        <!-- </div> -->
+        <div class="navigation_social">
+          <!-- <a
+            href="https://www.facebook.com/domypodklucz/"
+            target="_blank"
+            rel="noopener"
+            ><i class="fa-brands fa-facebook"></i
+          ></a> -->
+          <!-- <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-linkedin"></i> -->
+        </div>
+        <!-- <div class="navigation_policies">
+          <a href="polityka-prywatnosci.html">
+            Polityka prywatności & Cookies</a
+          >
+          <a href="cookies.html"> Wykorzystanie plików Cookies</a>
+          <a href="warunki-korzystania.html"> Warunki korzystania z serwisu</a>
+        </div> -->
+      </div>
+    </div>
+    <div id="overlay"></div>
       <!-- Hero Section -->
       <section id="hero" class="hero container">
         <div class="hero_heading">
@@ -220,13 +332,13 @@
             <div class="btn mT80">
               <a
                 class="btn_cnt"
-                href="#offer"
+                href="#aboutus"
                 style="transform: translate3d(0px, 0px, 0px)"
                 data-scroll-to
               >
                 <span class="btn-text"
-                  ><span data-text="Sprawdź naszą ofertę"
-                    >Sprawdź naszą ofertę</span
+                  ><span data-text="Zobacz kim jesteśmy"
+                    >Zobacz kim jesteśmy</span
                   ></span
                 >
               </a>
@@ -492,17 +604,6 @@
         <h2 class="heading">Kim jesteśmy?</h2>
         <div class="content">
           <p>
-            Jesteśmy firmą z ponad <strong>10 letnim</strong> doświadczeniem w
-            branży budowlanej. Specjalizującą się przede wszystkim w
-            profesjonalnej organizacji i realizacji
-            <strong>fundamentów</strong>, <strong>ścian nośnych</strong>,
-            <strong>działowych</strong> oraz <strong>wieńców</strong> i
-            <strong>stropów</strong> — najważniejszych etapów konstrukcji domu.
-            Pomagamy inwestorom takim jak Ty, którzy planują budowę domu i
-            oczekują <strong>rzetelności</strong>, <strong>jakości</strong> i
-            <strong>terminowości</strong>.
-          </p>
-          <p>
             Szukasz sprawdzonego wykonawcy do budowy domu jednorodzinnego w
             <strong>Łodzi</strong> lub <strong>okolicach</strong>? Zrealizujemy
             Twój projekt – od pierwszej rozmowy aż po ustalenia końcowe!
@@ -512,6 +613,13 @@
             rozwiązania, zajmiemy się formalnościami i zadbamy o najwyższą
             jakość wykonania.
           </p>
+          <p>
+            Jesteśmy firmą z ponad <strong>10 letnim</strong> doświadczeniem w
+            branży budowlanej. W tym czasie zrealizowaliśmy z sukcesem kilkadziesiąt mniejszych (domy) i większych (budynki użyteczności publicznej) inwestycji. W naszej <a href="#projects" data-scroll-to>galerii</a> do sprawdzenia kilka wybranych projektów.
+          </p>
+          <p>Pomagamy inwestorom takim jak Ty, którzy planują budowę domu i
+            oczekują <strong>rzetelności</strong>, <strong>jakości</strong> i
+            <strong>terminowości</strong>.</p>
         </div>
       </section>
 
@@ -917,8 +1025,8 @@
                   </dd>
                   <dt>Dla kogo:</dt>
                   <dd>
-                    inwestor, który chce mieć kontrolę i wsparcie, ale wciąż
-                    uczestniczyć aktywnie w procesie.
+                    inwestor, który chce uczestniczyć aktywnie w procesie oraz mieć kontrolę i wsparcie z naszej strony
+                    .
                   </dd>
                 </dl>
               </div>
@@ -979,7 +1087,7 @@
             </div>
           </div>
         </div>
-        <div class="offer-block">
+        <!-- <div class="offer-block">
           <h2 class="font_B font64">Ponadto oferujemy:</h2>
           <p class="font26 offer-desc">
             Dla zainteresowanych <strong>szybką</strong> i
@@ -1004,22 +1112,22 @@
           <p class="font26">
             Mamy również spore doświadczenie w budowie wszelkiego rodzaju
             <strong>budynków przemysłowych</strong>. Kilka z nich możesz znaleźć
-            w naszej <a href="#work">galerii</a>. Jeżeli masz do zrealizowania
+            w naszej <a href="#projects" data-scroll-to>galerii</a>. Jeżeli masz do zrealizowania
             podobną budowę odezwij się do nas i porozmawiajmy o szczegółach tej
             budowy.
           </p>
-        </div>
+        </div> -->
       </section>
 
       <!-- Work Section -->
-      <section id="work" class="work container containerV">
+      <section id="projects" class="work container containerV">
         <h2 class="heading">Zainspiruj się naszymi realizacjami</h1>
         <div class="project-container">
           <div class="project project-heading" id="header">
-            <div class="thumbnail" style="width: 277px; height: 73px"></div>
-            <div class="location">
+            <div class="thumbnail" style="width: 100px; height: 73px"></div>
+            <!-- <div class="location">
               <p>Miejsce</p>
-            </div>
+            </div> -->
             <div class="service">
               <p>Kategoria</p>
             </div>
@@ -1040,9 +1148,9 @@
                   alt="Stacja uzdatniania wody"
                 />
               </button>
-              <div class="location">
+              <!-- <div class="location">
                 <p>Starowa Góra k. Łodzi</p>
-              </div>
+              </div> -->
               <div class="service">
                 <p>Dom jednorodzinny</p>
               </div>
@@ -1106,9 +1214,9 @@
                   alt="Grotniki budynek mieszkalny"
                 />
               </button>
-              <div class="location">
+              <!-- <div class="location">
                 <p>Grotniki k. Łodzi</p>
-              </div>
+              </div> -->
               <div class="service">
                 <p>Dom jednorodzinny</p>
               </div>
@@ -1128,11 +1236,11 @@
                   alt="Miniatura Thameside Towers"
                 />
               </button>
-              <div class="location">
-                <p></p>
-              </div>
+              <!-- <div class="location">
+                <p>k. Łodzi</p>
+              </div> -->
               <div class="service">
-                <p>Dom jednorodzinny</p>
+                <p>Atlana ogrodowa z pergolą</p>
               </div>
               <!-- <div class="year">
                 <p>2023</p>
@@ -1216,9 +1324,9 @@
                   alt="Miniatura Thameside Towers"
                 />
               </button>
-              <div class="location">
+              <!-- <div class="location">
                 <p>Samotnik</p>
-              </div>
+              </div> -->
               <div class="service">
                 <p>Dom jednorodzinny</p>
               </div>
@@ -1238,9 +1346,9 @@
                   alt="Miniatura Thameside Towers"
                 />
               </button>
-              <div class="location">
+              <!-- <div class="location">
                 <p>Zgierz</p>
-              </div>
+              </div> -->
               <div class="service">
                 <p>Domy jednorodzinne</p>
               </div>
@@ -1260,9 +1368,9 @@
                   alt="Dom wybudowany w 2017 na Rudzie Bugaj pod Aleksandrowem Łódzkim"
                 />
               </button>
-              <div class="location">
+              <!-- <div class="location">
                 <p>Ruda Bugaj k. Aleksandrowa Ł.</p>
-              </div>
+              </div> -->
               <div class="service">
                 <p>Dom jednorodzinny</p>
               </div>
@@ -1367,7 +1475,7 @@
                 dobrze wybraliśmy. Nie tylko majstra, ale człowieka, który rozumie, że
                 dom to coś więcej niż projekt – to marzenie, które trzeba zbudować z sercem."</p>
               </div>
-              <p class="testimonial__author">Anna i Grzegorz Cedrowscy, Łódź</p>
+              <p class="testimonial__author">Anna i Grzegorz, Łódź</p>
             </article>
 
             <article class="testimonial">
@@ -1379,7 +1487,7 @@ zabezpieczone. Do momentu kiedy Pan Marcin prowadził budowę nie mieliśmy żad
 Mieszkamy w tym domu od ośmiu lat i do tej pory nie wystąpiły usterki mogące być związane z budową.</p>
 <p>W najbliższym czasie planujemy drugą inwestycję i oczywiście wykonawcą będzie Pan Marcin.”</p>
               </div>
-              <p class="testimonial__author">Anna Nowak, Pabianice</p>
+              <p class="testimonial__author">Marta, Łódź</p>
             </article>
           </div>
 
@@ -1525,6 +1633,7 @@ Mieszkamy w tym domu od ośmiu lat i do tej pory nie wystąpiły usterki mogące
 
       <div class="image" data-scroll>
         <img
+          loading="lazy"
           src="./images/home/full-img.webp"
           alt=""
           data-scroll
@@ -1551,7 +1660,7 @@ Mieszkamy w tym domu od ośmiu lat i do tej pory nie wystąpiły usterki mogące
         </div>
         <div class="container">
           <div class="contact-info">
-            <div class="contact-details">
+            <!-- <div class="contact-details">
               <h5 class="font_B font32">Dane firmowe:</h5>
               <ul class="font20">
                 <li><strong>MAAL</strong> - Marcin Sekura</li>
@@ -1560,7 +1669,7 @@ Mieszkamy w tym domu od ośmiu lat i do tej pory nie wystąpiły usterki mogące
                 <li>NIP: <strong>8281348577</strong></li>
                 <li>REGON: <strong>101526770</strong></li>
               </ul>
-            </div>
+            </div> -->
 
             <div class="contact-details">
               <ul>

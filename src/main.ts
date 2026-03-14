@@ -1,5 +1,6 @@
-import "./loco.css";
-import "./style.css";
+import "./styles/loco.css";
+import "./styles/style.css";
+import "./styles/silktide-consent-manager.css";
 import { animateNav } from "./scripts/nav";
 import LocomotiveScroll from "locomotive-scroll";
 import { marquee } from "./scripts/marquee";
@@ -30,8 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     new ResizeObserver(() => locoScroll.update()).observe(mainElement);
     initScrollToTopBtn(locoScroll);
+    animateNav(locoScroll);
   }
-  animateNav();
+
   marquee();
   initGallery();
   initForms();

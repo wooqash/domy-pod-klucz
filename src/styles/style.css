@@ -1,14 +1,14 @@
 @font-face {
   font-family: satoshiR;
-  src: url(fonts/Satoshi-Regular.woff2);
+  src: url(../fonts/Satoshi-Regular.woff2);
 }
 @font-face {
   font-family: satoshiM;
-  src: url(fonts/Satoshi-Medium.woff2);
+  src: url(../fonts/Satoshi-Medium.woff2);
 }
 @font-face {
   font-family: satoshiB;
-  src: url(fonts/Satoshi-Bold.woff2);
+  src: url(../fonts/Satoshi-Bold.woff2);
 }
 
 :root {
@@ -94,6 +94,10 @@ html {
 
 body {
   font-size: var(--body-text-font-size);
+}
+
+body.lock{
+  height: 100%;
 }
 
 body,
@@ -590,7 +594,7 @@ nav .nav_cnt .hamburger.-menu-open svg g:last-child line:last-child {
 .navigation_menu .navigation_cnt::-webkit-scrollbar {
   display: none;
 }
-.navigation_menu .navigation_cnt .nav_link a {
+.navigation_menu .navigation_cnt  a {
   font-size: 42px;
   letter-spacing: -2px;
   line-height: 120%;
@@ -600,14 +604,14 @@ nav .nav_cnt .hamburger.-menu-open svg g:last-child line:last-child {
   font-family: var(--bold-font-family);
 }
 @media only screen and (max-width: 550px) {
-  .navigation_menu .navigation_cnt .nav_link a {
+  .navigation_menu .navigation_cnt  a {
     font-size: 36px;
   }
 }
-.navigation_menu .navigation_cnt .nav_link a:hover {
+.navigation_menu .navigation_cnt  a:hover {
   color: #828894;
 }
-.navigation_menu .navigation_cnt .nav_link a.active {
+.navigation_menu .navigation_cnt  a.active {
   color: #828894;
 }
 .navigation_menu .navigation_cnt .navigation_social {
@@ -2491,7 +2495,8 @@ p.error-msg:empty {
   }
 } */
 @media only screen and (max-width: 1120px) {
-  #objections .about_block:nth-child(2) {
+  #objections .about_block:nth-child(2),
+  #objections .about_block:nth-child(4) {
     flex-direction: column-reverse;
   }
 }

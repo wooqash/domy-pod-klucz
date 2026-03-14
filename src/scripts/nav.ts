@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { Expo } from "gsap";
 import { releaseFocusTrap, trapFocus } from "./utils";
 
-export function animateNav() {
+export function animateNav(locomotiveScroll: LocomotiveScroll) {
   const hamburger: HTMLDivElement | null = document.querySelector(".open_nav");
   const sideMenu: HTMLDivElement | null = document.querySelector(".side-menu");
   const sideMenuContent: HTMLDivElement | null = document.querySelector(
@@ -21,15 +21,20 @@ export function animateNav() {
   const offerForm = document.querySelector("#offerFormContainer");
   const offerType = document.querySelector(".offer-type");
   const formMsg = document.querySelector(".form-msg");
+  const body = document.querySelector("body");
+  const menuLinks: NodeListOf<HTMLButtonElement> | null =
+    document.querySelectorAll(".menu-link");
 
   function toggleNavigation() {
     if (navigation && navigation.progress() === 1) {
       navigation.reverse().eventCallback("onReverseComplete", () => {
         overlay?.classList.remove("active");
+        body?.classList.remove("lock");
       });
     } else {
       navigation.play();
       overlay?.classList.add("active");
+      body?.classList.add("lock");
     }
     button?.classList.toggle("-menu-open");
   }
@@ -127,6 +132,19 @@ export function animateNav() {
     }
   }
 
+  const handleClick = (e: Event) => {
+    e.preventDefault();
+    const hash = (e?.target as HTMLAnchorElement).hash;
+    const target = document.querySelector(hash) as HTMLElement;
+
+    if (target) {
+      toggleNavigation();
+      window.setTimeout(() => {
+        locomotiveScroll.scrollTo(target, {});
+      }, 1000);
+    }
+  };
+
   hamburger?.addEventListener("click", toggleNavigation);
   closeButton?.addEventListener("click", toggleSideNav);
   sideMenuOpenElements?.forEach(el => {
@@ -138,4 +156,5 @@ export function animateNav() {
     if (!overlay2?.classList.contains("active")) return;
     if (e.key === "Escape") toggleSideNav(e);
   });
+  menuLinks.forEach(link => link.addEventListener("click", handleClick));
 }
